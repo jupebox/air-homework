@@ -4,13 +4,16 @@ import styles from "./Boards.module.css"
 import {Card} from "../Card/Card";
 
 export const Boards = ({boards}: {boards: Board[] | null, }) => {
-    if (!boards) return;
     const sortedBoards = useMemo(() => {
+        if (!boards) {
+            return null
+        }
         return boards.toSorted((a, b) => {
             if (a.pos === b.pos) return 0
             return a.pos > b.pos ? 1 : -1;
         })
     }, [boards]);
+    if (!boards || !sortedBoards) return;
     return (
         <ul className={styles.list}>
             {sortedBoards.map((board) => {

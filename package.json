@@ -2,6 +2,7 @@
   "name": "air-gallery-challenge",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"

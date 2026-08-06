@@ -20,7 +20,7 @@ export default function Home() {
           }
           setBoards(fetchedBoards);
 
-          const fetchedAssets = await fetchAssets({cursor: assets ? assets.pagination.cursor : null});
+          const fetchedAssets = await fetchAssets({cursor: null});
           if (!fetchedAssets) {
               // todo: error handling; possible retry mechanism
           }

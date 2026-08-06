@@ -1,0 +1,84 @@
+name: setup-node
+description: "Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧"
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node.js ⚙️
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Cache dependencies ⚡
+      id: cache_dependencies
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('package-lock.json') }}
+
+    - name: Install dependencies 🔧
+      shell: bash
+      if: steps.cache_dependencies.outputs.cache-hit != 'true'
+      run: npm ci
+
+Important: Put this file in the .github/workflows/setup-node directory in your project. Make sure to call the file action.yml.
+
+What does this code do?
+
+    It declares a composite action. The composite action allows you to bundle multiple workflow steps into a single action, combining multiple run commands into a single reusable action.
+    It creates a new build environment and sets up Node.js 20 there.
+    It installs npm dependencies and uses a caching mechanism to speed up this process.
+
+These are the most important parts of the setup-node action. Now, let's move on to the last action, which is publish.
+
+# File: .github/workflows/publish.yml
+name: publish-to-github-pages
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/setup-node
+
+      - name: Setup Pages ⚙️
+        uses: actions/configure-pages@v4
+        with:
+          static_site_generator: next
+
+      - name: Build with Next.js 🏗️
+        run: npx next build
+
+      - name: Upload artifact 📡
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Publish to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v4

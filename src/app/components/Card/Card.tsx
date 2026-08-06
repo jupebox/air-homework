@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import styles from "./Card.module.css";
+import Image from "next/image";
 
 export const Card = ({ href, title, thumbnail, isSquare, height, width}: {href: string, title: string, thumbnail: string | null, isSquare: boolean, height?: number, width?: number}) => {
     const cardStyle = useMemo(() => {
@@ -23,7 +24,7 @@ export const Card = ({ href, title, thumbnail, isSquare, height, width}: {href: 
             {/* if I had time to make the other pages, this would be a <Link> */}
             {/* would need further direction on how assets and boards are organized and linked together to create dynamic pages with confidence */}
             <a className={styles.title} href={href}>{title}</a>
-            {thumbnail ? <img className={styles.image} src={thumbnail} /> : ''}
+            {thumbnail ? <Image alt="" className={styles.image} src={thumbnail} /> : ''}
         </li>
     );
 }

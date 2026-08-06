@@ -41,7 +41,7 @@
     transition: transform 80ms;
 }
 
-.heading[aria-expanded="false"] .arrow {
+.arrow.expanded {
     transform: rotate(-90deg);
 }
 
