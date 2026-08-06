@@ -1,0 +1,47 @@
+.section {
+    margin: 2rem;
+}
+.heading {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: .05em;
+    font-size: .75rem;
+}
+.heading.notExpandable, .button {
+    padding: .25em .5em;
+    border-radius: .5em;
+    margin-left: -.5em;
+}
+.button {
+    display: flex;
+    align-items: center;
+    gap: .5ch;
+    transition-property: background-color,border-color;
+    /* was being overwritten */
+    text-transform: uppercase;
+
+    /* stolen from globals in example */
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+    border: dashed 1px rgba(255, 255, 255, 0);
+}
+
+.button:hover, .button:active {
+    /* todo: extract this into a global colors file */
+    background: rgb(220, 220, 220);
+    text-decoration: none;
+}
+
+.button:focus-visible {
+    border: dashed 1px currentColor;
+    outline: none;
+}
+
+.arrow {
+    transition: transform 80ms;
+}
+
+.heading[aria-expanded="false"] .arrow {
+    transform: rotate(-90deg);
+}
+
