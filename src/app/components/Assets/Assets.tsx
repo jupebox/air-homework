@@ -19,7 +19,7 @@ export const Assets = ({assets}: {assets: Clip[] | null, }) => {
                 console.log(asset);
             const { id, assetId, title, height, width, workspaceId, assets: thumbs, type, source } = asset;
     
-            return (<Card key={id} href={`/${workspaceId}/${id}`} thumbnail={thumbs.image} title={title || assetId} isSquare={false} height={height} width={width} />);
+            return (<Card key={id} href={`/${workspaceId}/${id}`} thumbnail={thumbs.image} title={title || assetId} titleStyle='hover' height={height} width={width} />);
        })}
        </ul>
     )
