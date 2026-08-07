@@ -6,18 +6,9 @@
     overflow: hidden;
 }
 
-.square {
-    height: 13rem;
-}
 
 .image {
     clip-path: inset(0 round .5em);
-}
-
-.square .image {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
 }
 
 .title {
