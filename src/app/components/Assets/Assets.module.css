@@ -3,6 +3,8 @@
     gap: 1.5rem;
     padding: 1rem 0;
     max-width: 22rem;
+    align-items: start;
+    justify-items: start;
 }
 
 /* todo: */
@@ -18,7 +20,7 @@
 /* horizontal masonry */
 @media (min-width: 45rem) {
     .list {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }
 

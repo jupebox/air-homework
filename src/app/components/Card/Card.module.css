@@ -12,7 +12,7 @@
 .title {
     position: absolute;
     bottom: 0;
-    padding: 10.75em .5em .75em;
+    padding: .75em .5em;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .6) 75%);
     opacity: 0;
     transition: opacity .2s;
@@ -20,6 +20,13 @@
     color: white;
     clip-path: inset(0 round .5em);
     z-index: 1;
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+}
+
+.title span {
+    align-content: flex-end;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
