@@ -4,19 +4,20 @@ import Image from "next/image";
 
 export const Card = ({ href, title, titleStyle = 'always', thumbnail, height, width}: {href: string, title: string, titleStyle?: 'hover' | 'always', thumbnail: string | null, height?: number, width?: number}) => {
     const cardStyle = useMemo(() => {
-    if (!height || !width) {
         return;
-    }
-    // this is VERY rough
-    // const isHeightBigger = height > width;
-    let newHeight = 280;
-    const ratio = width / height;
-    const newWidth = ratio * newHeight;
+        if (!height || !width) {
+            return;
+        }
+        // this is VERY rough
+        // const isHeightBigger = height > width;
+        let newHeight = 280;
+        const ratio = width / height;
+        const newWidth = ratio * newHeight;
 
-    return {
-        height: `${newHeight}px`,
-        minWidth: `${newWidth}px`
-    };
+        return {
+            height: `${newHeight}px`,
+            minWidth: `${newWidth}px`
+        };
     }, [height, width]);
     
     return (

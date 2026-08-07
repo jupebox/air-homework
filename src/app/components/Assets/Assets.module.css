@@ -1,6 +1,27 @@
 .list {
-    display: flex;
+    display: grid;
     gap: 1.5rem;
     padding: 1rem 0;
-    flex-wrap: wrap;
+    max-width: 22rem;
+}
+
+/* todo: */
+/* vertical masonry, two columns */
+@media (min-width: 30rem) {
+    .list {
+        max-width: none;
+        grid-template-columns: auto auto;
+    }
+}
+
+/* todo: */
+/* horizontal masonry */
+@media (min-width: 45rem) {
+    .list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+.list img {
+    object-fit: contain;
 }
