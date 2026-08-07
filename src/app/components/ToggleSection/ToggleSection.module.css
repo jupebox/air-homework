@@ -41,7 +41,7 @@
     transition: transform 80ms;
 }
 
-.arrow.expanded {
+.button[aria-expanded="true"] .arrow {
     transform: rotate(-90deg);
 }
 
